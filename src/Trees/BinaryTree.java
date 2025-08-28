@@ -41,4 +41,30 @@ public class BinaryTree {
        }
        return result;
     }
+    public List<Double> averageOfLevels(Node root) {
+     //https://leetcode.com/problems/average-of-levels-in-binary-tree/
+    List<Double> result = new ArrayList<>();
+    if(root == null){
+        return result;
+    }
+    Queue<Node> queue = new LinkedList<>();
+    queue.offer(root);
+    while (!queue.isEmpty()){
+        int levelSize = queue.size();
+        double sum = 0.0;
+        for (int i = 0; i < levelSize; i++) {
+            Node currentNode = queue.poll();
+            sum = sum + currentNode.value;
+            if(currentNode.left != null){
+                queue.offer(currentNode.left);
+            }
+            if(currentNode.right != null){
+                queue.offer(currentNode.right);
+            }
+        }
+        double avg = sum / levelSize;
+        result.add(avg);
+    }
+    return result;
+    }
 }
