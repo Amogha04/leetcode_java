@@ -78,4 +78,20 @@ public class DFS {
 
         return root;
     }
+    public void flatten(Node root) {
+        //https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
+        Node current = root;
+        while (current != null) {
+            while (current.left != null) {
+            Node temp = current.left;
+             while (temp.right != null){
+                 temp = temp.right;
+             }
+             temp.right = current.right;
+             current.right = current.left;
+             current.left = null;
+            }
+            current = current.right;
+        }
+    }
 }
