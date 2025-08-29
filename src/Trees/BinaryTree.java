@@ -166,4 +166,46 @@ public class BinaryTree {
         }
         return result;
     }
+    public boolean isCousins(Node root, int x, int y) {
+    //https://leetcode.com/problems/cousins-in-binary-tree/
+        if(root == null){
+            return false;
+        }
+        boolean isX = false;
+        boolean isY = false;
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        List<Integer> tree = new ArrayList<>();
+        while (!queue.isEmpty()){
+            int levelSize = queue.size();
+            for (int i = 0;i < levelSize;i++){
+                Node currentNode = queue.poll();
+                if(currentNode.value == x){
+                    isX = true;
+                }
+                if(currentNode.value == y){
+                    isY = true;
+                }
+                if(currentNode.left != null && currentNode.right != null){
+                    if(currentNode.left.value == x && currentNode.right.value == y ||
+                            currentNode.left.value == y && currentNode.right.value == x){
+                        return false;
+                    }
+                }
+                if(currentNode.left != null){
+                    queue.offer(currentNode.left);
+                }
+                if(currentNode.right != null){
+                    queue.offer(currentNode.right);
+                }
+            }
+            if(isX && isY ){
+                return true;
+            }
+            if(isX || isY ){
+                return false;
+            }
+        }
+        return false;
+    }
 }
