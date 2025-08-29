@@ -32,4 +32,22 @@ public class DFS {
         return Math.max(leftHeight,rightHeight) + 1;
     }
 
+    public Node invertTree(Node root){
+        //https://leetcode.com/problems/invert-binary-tree/
+        if(root == null){
+            return null;
+        }
+
+        swapNode(root,root.left,root.right);
+
+        invertTree(root.left);
+        invertTree(root.right);
+
+        return root;
+    }
+
+    private void swapNode(Node root, Node left, Node right) {
+        root.left = right;
+        root.right = left;
+    }
 }
