@@ -94,4 +94,21 @@ public class DFS {
             current = current.right;
         }
     }
+        public boolean isValidBST(Node root) {
+        //https://leetcode.com/problems/validate-binary-search-tree/submissions/1752725475/
+            if (root == null) return true;
+            return check(root, Long.MIN_VALUE, Long.MAX_VALUE);
+        }
+
+        private boolean check(Node node, long min, long max) {
+            if (node == null) return true;
+
+            // node value must lie within (min, max)
+            if (node.value <= min || node.value >= max) return false;
+
+            // check left and right subtrees with updated constraints
+            return check(node.left, min, node.value) &&
+                    check(node.right, node.value, max);
+    }
 }
+
