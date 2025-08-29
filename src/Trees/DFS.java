@@ -50,4 +50,14 @@ public class DFS {
         root.left = right;
         root.right = left;
     }
+    public int maxDepth(Node root) {
+        //https://leetcode.com/problems/maximum-depth-of-binary-tree/
+        if(root == null){
+            return 0;
+        }
+        int leftDepth = maxDepth(root.left);
+        int rightDepth = maxDepth(root.right);
+
+        return Math.max(leftDepth,rightDepth) + 1;
+    }
 }
