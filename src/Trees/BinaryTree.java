@@ -96,4 +96,29 @@ public class BinaryTree {
         }
         return result;
     }
+    public List<List<Integer>> levelOrderBottom(Node root) {
+    //https://leetcode.com/problems/binary-tree-level-order-traversal-ii/
+        List<List<Integer>> result = new ArrayList<>();
+        if(root == null){
+            return result;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            int levelSize = queue.size();
+            List<Integer> currentLevel = new ArrayList<>();
+            for (int i = 0;i < levelSize;i++){
+                Node currentNode = queue.poll();
+                currentLevel.add(currentNode.value);
+                if(currentNode.left != null){
+                    queue.offer(currentNode.left);
+                }
+                if(currentNode.right != null){
+                    queue.offer(currentNode.right);
+                }
+            }
+            result.addFirst(currentLevel);
+        }
+        return result;
+    }
 }
