@@ -60,4 +60,22 @@ public class DFS {
 
         return Math.max(leftDepth,rightDepth) + 1;
     }
+    public Node sortedArrayToBST(int[] nums) {
+    //https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+        if(nums == null || nums.length == 0){
+            return null;
+        }
+     return sortedArrayToBST(nums,0,nums.length - 1);
+    }
+    public Node sortedArrayToBST(int[] nums,int start,int end){
+        if(start >= end){
+            return null;
+        }
+        int mid = start + (end - start) / 2;
+        Node root = new Node(nums[mid]);
+        root.left = sortedArrayToBST(nums,start,mid);
+        root.right = sortedArrayToBST(nums,mid + 1,end);
+
+        return root;
+    }
 }
