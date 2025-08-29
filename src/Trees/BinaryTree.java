@@ -141,4 +141,29 @@ public class BinaryTree {
           }
       return root;
     }
+    public List<Integer> rightSideView(Node root) {
+    //https://leetcode.com/problems/binary-tree-right-side-view/
+        List<Integer> result = new ArrayList<>();
+        if(root == null){
+            return result;
+        }
+        Queue<Node> queue = new LinkedList<>();
+        queue.offer(root);
+        while (!queue.isEmpty()){
+            int levelSize = queue.size();
+            for (int i = 0; i < levelSize; i++) {
+                Node currentNode = queue.poll();
+                if(i == levelSize - 1){
+                    result.add(currentNode.value);
+                }
+                if(currentNode.left != null){
+                    queue.offer(currentNode.left);
+                }
+                if(currentNode.right != null){
+                    queue.offer(currentNode.right);
+                }
+            }
+        }
+        return result;
+    }
 }
