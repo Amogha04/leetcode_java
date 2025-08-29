@@ -10,6 +10,7 @@ public class BinaryTree {
         private int value;
         private Node left;
         private Node right;
+        private Node next;
 
         public Node(int value) {
             this.value = value;
