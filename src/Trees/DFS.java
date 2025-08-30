@@ -186,5 +186,22 @@ public class DFS {
         // Recurse into left OR right
         return hasPathSum(root.left, targetSum) || hasPathSum(root.right, targetSum);
     }
+    public int sumNumbers(Node root) {
+    //https://leetcode.com/problems/sum-root-to-leaf-numbers/
+       return helper(root,0);
+    }
+
+    private int helper(Node root, int sum) {
+        if(root == null){
+            return 0;
+        }
+        sum = sum * 10 + root.value;
+        if(root.left == null && root.right == null){
+            return sum;
+        }
+        int sumLeft = helper(root.left,sum);
+        int sumRight = helper(root.right,sum);
+        return sumLeft + sumRight;
+    }
 }
 
