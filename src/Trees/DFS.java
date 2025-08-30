@@ -203,5 +203,25 @@ public class DFS {
         int sumRight = helper(root.right,sum);
         return sumLeft + sumRight;
     }
+    int max;
+    public int maxPathSum(Node root) {
+    //https://leetcode.com/problems/binary-tree-maximum-path-sum/
+        max = Integer.MIN_VALUE;
+        dfs(root);
+        return max;
+    }
+
+    private int dfs(Node node) {
+        if(node == null){
+            return 0;
+        }
+        int left = Math.max(dfs(node.left),0);
+        int right = Math.max(dfs(node.right),0);
+
+        int current = node.value + left + right;
+        max = Math.max(max,current);
+
+        return node.value + Math.max(left,right);
+    }
 }
 
