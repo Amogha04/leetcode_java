@@ -169,5 +169,22 @@ public class DFS {
 
         return node;
     }
+    public boolean hasPathSum(Node root, int targetSum) {
+   //https://leetcode.com/problems/path-sum/
+        if (root == null) {
+            return false;
+        }
+
+        // Subtract current node's value from target
+        targetSum -= root.value;
+
+        // If we reach a leaf, check if sum matches
+        if (root.left == null && root.right == null) {
+            return targetSum == 0;
+        }
+
+        // Recurse into left OR right
+        return hasPathSum(root.left, targetSum) || hasPathSum(root.right, targetSum);
+    }
 }
 
