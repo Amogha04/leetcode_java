@@ -110,5 +110,21 @@ public class DFS {
             return check(node.left, min, node.value) &&
                     check(node.right, node.value, max);
     }
+    public Node lowestCommonAncestor(Node root, Node p, Node q) {
+    //https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
+        if(root == null){
+            return null;
+        }
+        if(root == p || root == q){
+            return root;
+        }
+        Node left = lowestCommonAncestor(root.left,p,q);
+        Node right = lowestCommonAncestor(root.right,p,q);
+
+        if(left != null && right != null){
+            return root;
+        }
+        return left == null ? right : left;
+    }
 }
 
