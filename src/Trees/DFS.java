@@ -126,5 +126,27 @@ public class DFS {
         }
         return left == null ? right : left;
     }
+    int count = 0;
+    int result = -1;
+
+    public int kthSmallest(Node root, int k) {
+        //https://leetcode.com/problems/kth-smallest-element-in-a-bst/
+        inorder(root, k);
+        return result;
+    }
+
+    private void inorder(Node node, int k) {
+        if (node == null) return;
+
+        inorder(node.left, k);
+
+        count++;
+        if (count == k) {
+            result = node.value;
+            return; // stop early once kth element is found
+        }
+
+        inorder(node.right, k);
+    }
 }
 
