@@ -1,7 +1,6 @@
 package HashMaps_or_HashSets;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Anagram {
     //https://leetcode.com/problems/valid-anagram/description/
