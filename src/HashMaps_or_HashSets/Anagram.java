@@ -8,6 +8,7 @@ public class Anagram {
     public static void main(String[] args) {
         String s = "anagram";
         String t = "nagaram";
+        String[] strs = {"eat","tea","tan","ate","nat","bat"};
         System.out.println(isAnagram(s,t));
     }
     public static boolean isAnagram(String s, String t) {
