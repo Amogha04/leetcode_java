@@ -1,5 +1,10 @@
 package Trees;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
+
 public class DFS {
     public class Node {
         private int value;
