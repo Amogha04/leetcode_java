@@ -228,5 +228,23 @@ public class DFS {
 
         return node.value + Math.max(left,right);
     }
+
+    public int rangeSumBST(Node root, int low, int high) {
+    //https://leetcode.com/problems/range-sum-of-bst/
+        if(root == null){
+            return 0;
+        }
+        int sum = 0;
+        if(root.value >= low && root.value <= high){
+            sum += root.value;
+        }
+        if(root.value > low){
+           sum += rangeSumBST(root.left,low,high);
+        }
+        if(root.value < high){
+          sum += rangeSumBST(root.right,low,high);
+        }
+        return sum;
+    }
 }
 
